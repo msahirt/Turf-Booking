@@ -9,7 +9,7 @@ const courtSchema = mongoose.Schema({
         type:String,
         required: true
     },
-    adress1:{
+    address1:{
         type:String,
         required: true
     },
@@ -41,7 +41,7 @@ const courtSchema = mongoose.Schema({
         }
     },
     courtPics:{
-        type:Array
+        type:String
     },
     timeStamp:{
         type:Date,

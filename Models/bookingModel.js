@@ -6,17 +6,16 @@ const bookingSchema = new mongoose.Schema({
         required:true,
         maxLength: 50,
     },
-    bookingDate:{
+    bookedDate:{
         type:Date,
-        default:new Date(),
         required : true
     },
     timeSlot:{
-        type: TimeRanges,
+        type: Array,
         required : true
     },
-    user: [{ type: mongoose.Types.ObjectId, ref: "User" }],
-    courts: [{ type: mongoose.Types.ObjectId, ref: "Courts" }],
+    bookedBy: [{ type: mongoose.Types.ObjectId, required : true, ref: "User" }],
+    courtId: [{ type: mongoose.Types.ObjectId, required : true, ref: "Courts" }]
 
 })
 

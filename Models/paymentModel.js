@@ -6,7 +6,7 @@ const paymentSchema = new mongoose.Schema({
         required:true,
         maxLength: 50,
     },
-    amount :{
+    totalCost :{
         type : Number,
         required : true
     },
@@ -18,9 +18,17 @@ const paymentSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    user: [{ type: mongoose.Types.ObjectId, ref: "User" }],
-    courts: [{ type: mongoose.Types.ObjectId, ref: "Courts" }]
+    status : {
+        type : Number,
+        default : 1
+        // 1 started,
+        // 2 successfull,
+        // 3 failed,
+        // 4 refund
+    },
+    bookedBy: [{ type: mongoose.Types.ObjectId, required : true, ref: "User" }],
+    courtId: [{ type: mongoose.Types.ObjectId, required : true, ref: "Courts" }]
 
 })
 
-export const payment = mongoose.model("Payment", paymentSchema);
+export const Payment = mongoose.model("Payment", paymentSchema);
